@@ -55,7 +55,7 @@ import {
 import { useMemo, useState } from "react"
 import LoadingSpinner from "../LoadingSpinner"
 import ErrorMessage from "../ErrorMessage"
-import DeleteServiceProviderModal from "./DeleteServiceProviderModule"
+import DeleteServiceProviderModal from "./DeleteServiceProviderModal"
 import { useGetServiceProvidersQuery } from "../../api/sp.api"
 
 export default function SPTable() {
@@ -143,7 +143,7 @@ export default function SPTable() {
       {isLoading && <LoadingSpinner />}
       {error && <ErrorMessage error={error.message} />}
       <Heading my={2} textAlign="center">
-        Users
+        Service Providers
       </Heading>
       <Flex justifyContent="center" gap="4" p="4">
         <InputGroup

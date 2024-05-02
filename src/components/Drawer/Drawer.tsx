@@ -1,4 +1,4 @@
-import { Box, Link, List, ListItem } from "@chakra-ui/react"
+import { Box, Button, Link, List, ListItem } from "@chakra-ui/react"
 import { NavLink } from "react-router-dom"
 
 const links = [
@@ -26,6 +26,7 @@ export default function Drawer() {
           </ListItem>
         ))}
       </List>
+      <Button>Logout</Button>
     </Box>
   )
 }

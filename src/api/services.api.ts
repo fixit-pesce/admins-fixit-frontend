@@ -26,7 +26,7 @@ export type TService = {
 }
 
 export const getServices = async () => {
-  const response = await api.get("/services")
+  const response = await api.get("/service-providers/services")
   return response.data
 }
 
