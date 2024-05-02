@@ -9,7 +9,7 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <Box minH="100vh" bg="primary.100">
       <Flex>
-        <Drawer>Test</Drawer>
+        <Drawer />
         <Box w="100%" p="4" justifyContent="center" alignItems="center">
           {children}
         </Box>
