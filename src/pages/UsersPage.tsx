@@ -1,4 +1,4 @@
-import UserTable from "../components/UserTable"
+import UserTable from "../components/Users/UserTable"
 import BaseLayout from "../layouts/BaseLayout"
 
 export default function UsersPage() {

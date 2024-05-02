@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 
 const api = axios.create({
@@ -10,9 +10,9 @@ const api = axios.create({
 })
 
 type TUser = {
-  username: string,
-  email: string,
-  first_name: string,
+  username: string
+  email: string
+  first_name: string
   last_name: string
 }
 
@@ -25,5 +25,20 @@ export const useGetUsersQuery = () => {
   return useQuery<TUser[]>({
     queryKey: ["users"],
     queryFn: getUsers,
+  })
+}
+
+export const deleteUser = async (username: string) => {
+  const response = await api.delete(`/users/${username}`)
+  return response.data
+}
+
+export const useDeleteUserMutation = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: ({ username }: { username: string }) => deleteUser(username),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] })
+    },
   })
 }

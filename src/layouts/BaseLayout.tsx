@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react"
-import Drawer from "../components/Drawer"
+import Drawer from "../components/Drawer/Drawer"
 
 interface BaseLayoutProps {
   children?: React.ReactNode
