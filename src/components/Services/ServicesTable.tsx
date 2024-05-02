@@ -56,9 +56,9 @@ import { useMemo, useState } from "react"
 import LoadingSpinner from "../LoadingSpinner"
 import ErrorMessage from "../ErrorMessage"
 import DeleteServiceModal from "./DeleteServiceModal"
-import { useGetServiceProvidersQuery } from "../../api/sp.api"
+import { useGetServicesQuery } from "../../api/services.api"
 
-export default function SPTable() {
+export default function ServicesTable() {
   const [currentSP, setCurrentSP] = useState("")
   const [currentService, setCurrentService] = useState("")
 
@@ -71,16 +71,30 @@ export default function SPTable() {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "email",
-        header: "email",
+        accessorKey: "name",
+        header: "Name",
       },
       {
-        accessorKey: "username",
-        header: "username",
+        accessorKey: "description",
+        header: "Description",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        cell: (info: any) => info.getValue()?.substring(0, 20) + "...",
       },
       {
-        accessorKey: "company_name",
-        header: "Company Name",
+        accessorKey: "price",
+        header: "Price",
+      },
+      {
+        accessorKey: "category",
+        header: "Category",
+      },
+
+      {
+        accessorKey: "location",
+        header: "Location",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        cell: (info: any) =>
+          info.getValue()?.locality + ", " + info.getValue()?.city,
       },
       {
         accesorKey: "actions",
@@ -107,7 +121,7 @@ export default function SPTable() {
     [onDeleteOpen]
   )
 
-  const { isLoading, error, data } = useGetServiceProvidersQuery()
+  const { isLoading, error, data } = useGetServicesQuery()
 
   const [columnVisibility, setColumnVisibility] = useState({})
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([])

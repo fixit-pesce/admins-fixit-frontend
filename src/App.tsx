@@ -2,8 +2,9 @@ import { Box } from "@chakra-ui/react"
 import { Route, Routes } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import UsersPage from "./pages/UsersPage"
-import HomePage from "./pages/HomePage"
 import ServiceProvidersPage from "./pages/ServiceProvidersPage"
+import DashboardPage from "./pages/DashboardPage"
+import ServicesPage from "./pages/ServicesPage"
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/service-providers" element={<ServiceProvidersPage />} />
-        <Route path="/test" element={<HomePage />} />
+        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="/services" element={<ServicesPage />} />
       </Routes>
     </Box>
   )
