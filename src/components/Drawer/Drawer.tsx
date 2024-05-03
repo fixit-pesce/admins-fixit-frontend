@@ -1,5 +1,5 @@
 import { Box, Button, Link, List } from "@chakra-ui/react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 const links = [
   { name: "Dashboard", path: "/dashboard" },
@@ -9,6 +9,13 @@ const links = [
 ]
 
 export default function Drawer() {
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    navigate("/")
+  }
   return (
     <Box
       bg="secondary.400"
@@ -29,7 +36,7 @@ export default function Drawer() {
           </Link>
         ))}
       </List>
-      <Button colorScheme="blue" mt="2">
+      <Button colorScheme="blue" mt="2" onClick={logout}>
         Logout
       </Button>
     </Box>
