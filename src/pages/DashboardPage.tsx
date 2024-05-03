@@ -1,5 +1,9 @@
-import React from "react"
+import BaseLayout from "../layouts/BaseLayout"
 
 export default function DashboardPage() {
-  return <div>DashboardPage</div>
+  return (
+    <BaseLayout>
+      <div>Dashboard</div>
+    </BaseLayout>
+  )
 }
