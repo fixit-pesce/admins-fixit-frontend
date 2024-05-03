@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { BaseSyntheticEvent, useState } from "react"
 import {
   Card,
   Center,
@@ -10,22 +10,47 @@ import {
   FormLabel,
   Input,
   Button,
-  Text,
-  Box,
-  Link,
 } from "@chakra-ui/react"
 import { MdHandyman } from "react-icons/md"
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { PasswordField } from "./PasswordField"
+import { useLoginMutation } from "../../api/login.api"
+import useSuccessToast from "../../hooks/useSuccessToast"
+import useErrorToast from "../../hooks/useErrorToast"
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {}
+  const loginMutation = useLoginMutation()
+  const successToast = useSuccessToast()
+  const errorToast = useErrorToast()
+
+  const handleSubmit = (e: BaseSyntheticEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    console.log(e)
+    loginMutation.mutate(
+      {
+        username: e.target.form[0].value,
+        password: e.target.form[2].value,
+      },
+      {
+        onSuccess: () => {
+          setIsLoading(false)
+          successToast("Login successful")
+          navigate("/dashboard")
+        },
+        onError: (error) => {
+          setIsLoading(false)
+          errorToast(error)
+        },
+      }
+    )
+  }
 
   return (
-    <Card maxW="md" p={8} bg="foreground" boxShadow="lg" m={4}>
+    <Card maxW="md" p={8} bg="white" boxShadow="lg" m={4}>
       <Stack spacing={4}>
         <Center>
           <Icon as={MdHandyman} h="32px" w="32px" />
@@ -48,9 +73,7 @@ export default function Login() {
             </FormControl>
             <PasswordField placeholder="Enter your password" />
             <Button
-              bg="primary.400"
-              color="white"
-              _hover={{ bg: "primary.500" }}
+              colorScheme="blue"
               type="submit"
               onClick={(e) => handleSubmit(e)}
               isLoading={isLoading}

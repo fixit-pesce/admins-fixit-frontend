@@ -1,4 +1,4 @@
-import { Box, Button, Link, List, ListItem } from "@chakra-ui/react"
+import { Box, Button, Link, List } from "@chakra-ui/react"
 import { NavLink } from "react-router-dom"
 
 const links = [
@@ -17,16 +17,21 @@ export default function Drawer() {
       boxShadow="xl"
       textAlign="center"
     >
-      <List>
+      <List display="flex" flexDirection="column">
         {links.map((link) => (
-          <ListItem key={link.name}>
-            <Link as={NavLink} to={link.path}>
-              {link.name}
-            </Link>
-          </ListItem>
+          <Link
+            as={NavLink}
+            py="2"
+            to={link.path}
+            _activeLink={{ fontWeight: "bold", bg: "secondary.500" }}
+          >
+            {link.name}
+          </Link>
         ))}
       </List>
-      <Button>Logout</Button>
+      <Button colorScheme="blue" mt="2">
+        Logout
+      </Button>
     </Box>
   )
 }

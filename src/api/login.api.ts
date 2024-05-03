@@ -14,7 +14,7 @@ export type TLoginUser = {
   password: string
 }
 
-export const loginUser = async ({
+export const login = async ({
   username,
   password,
 }: {
@@ -28,8 +28,8 @@ export const loginUser = async ({
   return response.data
 }
 
-export const useLoginUserQuery = () => {
+export const useLoginMutation = () => {
   return useMutation({
-    mutationFn: loginUser,
+    mutationFn: login,
   })
 }
