@@ -29,16 +29,18 @@ export default function Login() {
   const handleSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    console.log(e)
+    console.log(e.target.form[0].value)
+    console.log(e.target.form[1].value)
     loginMutation.mutate(
       {
         username: e.target.form[0].value,
         password: e.target.form[2].value,
       },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
           setIsLoading(false)
           successToast("Login successful")
+          localStorage.setItem("token", data.access_token)
           navigate("/dashboard")
         },
         onError: (error) => {
