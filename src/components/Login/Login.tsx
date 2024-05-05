@@ -29,8 +29,6 @@ export default function Login() {
   const handleSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    console.log(e.target.form[0].value)
-    console.log(e.target.form[1].value)
     loginMutation.mutate(
       {
         username: e.target.form[0].value,
