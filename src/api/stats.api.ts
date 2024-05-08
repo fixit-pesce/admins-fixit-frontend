@@ -46,7 +46,7 @@ export const useGetMostBookedServicesQuery = () => {
 }
 
 export const getUsersWithMostBookings = async () => {
-  const response = await api.get("/stats/most-booked-categories")
+  const response = await api.get("/stats/users-with-most-bookings")
   return response.data
 }
 

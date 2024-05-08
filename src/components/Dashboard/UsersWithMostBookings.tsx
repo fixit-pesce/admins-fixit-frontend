@@ -1,10 +1,10 @@
 import { Box, Heading } from "@chakra-ui/react"
-import { useGetMostRatedServicesQuery } from "../../api/stats.api"
+import { useGetUsersWithMostBookingsQuery } from "../../api/stats.api"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts"
 
 export default function UsersWithMostBookings() {
-  const { data } = useGetMostRatedServicesQuery()
+  const { data } = useGetUsersWithMostBookingsQuery()
 
   const categories = Object.keys(data || {})
   const values = Object.values(data || {})
@@ -51,7 +51,7 @@ export default function UsersWithMostBookings() {
   return (
     <Box bg="white" rounded="lg" boxShadow="lg">
       <Heading textAlign="center" p="4">
-        Most Rated Services
+        User with Most Bookings
       </Heading>
       {data && (
         <ReactApexChart
