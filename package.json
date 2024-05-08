@@ -16,9 +16,11 @@
     "@tanstack/react-query": "^5.32.1",
     "@tanstack/react-query-devtools": "^5.32.1",
     "@tanstack/react-table": "^8.16.0",
+    "apexcharts": "^3.49.0",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.25",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.0",
     "react-router-dom": "^6.23.0"

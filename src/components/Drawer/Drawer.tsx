@@ -25,9 +25,10 @@ export default function Drawer() {
       textAlign="center"
     >
       <List display="flex" flexDirection="column">
-        {links.map((link) => (
+        {links.map((link, index) => (
           <Link
             as={NavLink}
+            key={index}
             py="2"
             to={link.path}
             _activeLink={{ fontWeight: "bold", bg: "secondary.500" }}
